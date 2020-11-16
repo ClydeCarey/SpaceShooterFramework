@@ -9,6 +9,9 @@ public class Player : MonoBehaviour
     private float _speed = 3.5f;
     private float _speedMultiplier = 2.0f;
     [SerializeField]
+    private float _thrustersMultiplier = 1.0f;    
+    //private string _thrustButton = "LeftShift";
+    [SerializeField]
     private GameObject _laserPrefab;
     [SerializeField]
     private GameObject _tripleShotPrefab;
@@ -69,6 +72,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        SetThrusterSpeed();
         CalculateMovement();
 
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire)
@@ -76,7 +80,18 @@ public class Player : MonoBehaviour
             FireLaser();
         }
     }
-       
+    
+    void SetThrusterSpeed()
+    {
+        if(Input.GetKey(KeyCode.LeftShift))
+        {
+            _thrustersMultiplier = 1.5f;
+        }
+        else 
+        {
+            _thrustersMultiplier = 1.0f;
+        }
+    }
 
     void CalculateMovement()
     {
@@ -85,7 +100,7 @@ public class Player : MonoBehaviour
 
         Vector3 direction = new Vector3(horizontalInput, verticalInput, 0);
 
-        transform.Translate(direction * _speed * Time.deltaTime);
+        transform.Translate(direction * _speed * _thrustersMultiplier * Time.deltaTime);
       
         transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -3.8f, 0.0f), 0);
 

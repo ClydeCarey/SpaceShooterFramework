@@ -1169,6 +1169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
+  _thrustersMultiplier: 1
   _laserPrefab: {fileID: 4981891334259518781, guid: 620b0b1a02aa35f468f9b877d0010d70,
     type: 3}
   _tripleShotPrefab: {fileID: 5683450069082620806, guid: 6ba7cfd9ff9943247aae6075fc556f60,
