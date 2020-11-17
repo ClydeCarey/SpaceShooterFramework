@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Player : MonoBehaviour
 {       
@@ -15,10 +16,14 @@ public class Player : MonoBehaviour
     private GameObject _laserPrefab;
     [SerializeField]
     private GameObject _tripleShotPrefab;
+
     [SerializeField]
     private float _fireRate = 0.5f;
     private float _canFire = -1.0f;
     public int ammoCount =15;
+    public TMP_Text textToScreen;
+    string convertAmmoToString;
+
     [SerializeField]
     private int _lives = 3;
     private SpawnManager _spawnManager;
@@ -55,6 +60,9 @@ public class Player : MonoBehaviour
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
         _audiosource = GetComponent<AudioSource>();
         _emptyChamber = GetComponent<AudioSource>();
+        //string convertAmmoToString;
+        //convertAmmoToString = ammoCount.ToString();
+        //textToScreen.text = convertAmmoToString;
 
         if(_spawnManager == null)
         {
@@ -163,6 +171,8 @@ public class Player : MonoBehaviour
 
             _emptyChamber.Play();
         }
+        convertAmmoToString = ammoCount.ToString();
+        textToScreen.text = convertAmmoToString;
     }
 
     public void Damage()
