@@ -66,15 +66,15 @@ public class Player : MonoBehaviour
             Debug.LogError("The UI Manager is NULL");
         }
 
-        if (_audiosource == null)
-        {
-            Debug.LogError("AudioSource on the player is NULL");
-        }
-        else
-        {
-            _audiosource.clip = _laserSoundClip;
-            _emptyChamber.clip = _noAmmoClip;
-        }
+        //if (_audiosource == null)
+        //{
+        //    Debug.LogError("AudioSource on the player is NULL");
+        //}
+        //else
+        //{
+        //    _audiosource.clip = _laserSoundClip;
+        //    _emptyChamber.clip = _noAmmoClip;
+        //}
     }
 
     // Update is called once per frame
@@ -127,6 +127,14 @@ public class Player : MonoBehaviour
     {
         if (ammoCount > 0)
         {
+            if (_audiosource == null)
+            {
+                Debug.LogError("AudioSource on the player is NULL");
+            }
+            else
+            {
+                _audiosource.clip = _laserSoundClip;                
+            }
             _canFire = Time.time + _fireRate;
 
             if (_isTripleShotActive == true)
@@ -143,6 +151,14 @@ public class Player : MonoBehaviour
         }
         else if (ammoCount < 1)
         {
+            if (_audiosource == null)
+            {
+                Debug.LogError("AudioSource on the player is NULL");
+            }
+            else
+            {                
+                _emptyChamber.clip = _noAmmoClip;
+            }
             _canFire = Time.time + _fireRate;            
 
             _emptyChamber.Play();
