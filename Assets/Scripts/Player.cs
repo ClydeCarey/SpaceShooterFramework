@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     private bool _isTripleShotActive = false;   
     private bool _isSpeedBoostActive = false;
     private bool _isShieldsActive = false;
+    private int _shieldLevel = 3;
 
     [SerializeField]
     private GameObject _shieldVisualizer;
@@ -134,7 +135,21 @@ public class Player : MonoBehaviour
     public void Damage()
     {
         if (_isShieldsActive == true)
+            //_shieldLevel --;
         {
+            //switch (_shieldLevel)
+            //    case 2:
+            //      change color to yellow - sbhield.componenet<meshrenderer>().material.color = color.blue
+            //      _shieldLevel --;
+            //      return;
+            //  case 2:
+            //      change color to red
+            //      _shieldLevel --;
+            //      return;
+            //  case 3:
+            //      _shieldLevel = 3
+            //      break;
+
             _isShieldsActive = false;
             _shieldVisualizer.SetActive(false);
             return;
