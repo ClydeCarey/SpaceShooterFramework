@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     private float _speedMultiplier = 2.0f;
     [SerializeField]
     private float _thrustersMultiplier = 1.0f;    
-    //private string _thrustButton = "LeftShift";
+    
     [SerializeField]
     private GameObject _laserPrefab;
     [SerializeField]
@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _fireRate = 0.5f;
     private float _canFire = -1.0f;
+    public int ammoCount =15;
     [SerializeField]
     private int _lives = 3;
     private SpawnManager _spawnManager;
@@ -40,9 +41,12 @@ public class Player : MonoBehaviour
     private UIManager _uiManager;
 
     [SerializeField]
-    private AudioClip _laserSoundClip;    
+    private AudioClip _laserSoundClip;
+    [SerializeField]
+    private AudioClip _noAmmoClip;
     private AudioSource _audiosource;
-                        
+    private AudioSource _emptyChamber;
+
     // Start is called before the first frame update
     void Start()
     {        
@@ -50,6 +54,7 @@ public class Player : MonoBehaviour
         _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>();
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
         _audiosource = GetComponent<AudioSource>();
+        _emptyChamber = GetComponent<AudioSource>();
 
         if(_spawnManager == null)
         {
@@ -68,6 +73,7 @@ public class Player : MonoBehaviour
         else
         {
             _audiosource.clip = _laserSoundClip;
+            _emptyChamber.clip = _noAmmoClip;
         }
     }
 
@@ -79,7 +85,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire)
         {
-            FireLaser();
+            FireLaser();                  
         }
     }
     
@@ -119,18 +125,28 @@ public class Player : MonoBehaviour
 
     void FireLaser()
     {
-        _canFire = Time.time + _fireRate;
-
-        if (_isTripleShotActive == true)
+        if (ammoCount > 0)
         {
-            Instantiate(_tripleShotPrefab, transform.position, Quaternion.identity);
-        }
-        else
-        {
-            Instantiate(_laserPrefab, transform.position + new Vector3(0, 1.05f, 0), Quaternion.identity);
-        }
+            _canFire = Time.time + _fireRate;
 
-        _audiosource.Play();
+            if (_isTripleShotActive == true)
+            {
+                Instantiate(_tripleShotPrefab, transform.position, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(_laserPrefab, transform.position + new Vector3(0, 1.05f, 0), Quaternion.identity);
+            }
+
+            _audiosource.Play();
+            ammoCount--;
+        }
+        else if (ammoCount < 1)
+        {
+            _canFire = Time.time + _fireRate;            
+
+            _emptyChamber.Play();
+        }
     }
 
     public void Damage()
