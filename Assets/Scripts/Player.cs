@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _fireRate = 0.5f;
     private float _canFire = -1.0f;
-    public int ammoCount =15;
+    public int ammoCount = 15;
     public TMP_Text textToScreen;
     string convertAmmoToString;
 
@@ -72,17 +72,7 @@ public class Player : MonoBehaviour
         if (_uiManager == null)
         {
             Debug.LogError("The UI Manager is NULL");
-        }
-
-        //if (_audiosource == null)
-        //{
-        //    Debug.LogError("AudioSource on the player is NULL");
-        //}
-        //else
-        //{
-        //    _audiosource.clip = _laserSoundClip;
-        //    _emptyChamber.clip = _noAmmoClip;
-        //}
+        }        
     }
 
     // Update is called once per frame
@@ -179,9 +169,7 @@ public class Player : MonoBehaviour
     {
         if (_isShieldsActive == true)
         {
-            ShieldHealthMechanics();
-            //_isShieldsActive = false;
-            //_shieldVisualizer.SetActive(false);
+            ShieldHealthMechanics();            
             return;
         }       
         _lives--;
@@ -236,6 +224,14 @@ public class Player : MonoBehaviour
         shieldSpriteRenderer.GetComponent<SpriteRenderer>().color = Color.white;
         _isShieldsActive = true;
         _shieldVisualizer.SetActive(true);
+    }
+
+    public void AmmoDrop()
+    {
+        //Debug.Log("Ammodrop ran");
+        ammoCount = 15;
+        convertAmmoToString = ammoCount.ToString();
+        textToScreen.text = convertAmmoToString;
     }
 
     public void ShieldHealthMechanics()
