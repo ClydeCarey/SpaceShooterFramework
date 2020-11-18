@@ -59,7 +59,7 @@ public class UIManager : MonoBehaviour
     {
         while(true)
         {
-            _gameOvertext.text = "Enjoy your fate, Micronian";
+            _gameOvertext.text = "Meet your destiny, Micronian";
             yield return new WaitForSeconds(0.5f);
             _gameOvertext.text = "";
             yield return new WaitForSeconds(0.5f);
