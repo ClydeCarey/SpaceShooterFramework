@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     private GameObject _laserPrefab;
     [SerializeField]
     private GameObject _tripleShotPrefab;
+    [SerializeField]
+    private GameObject _missilePrefab;
 
     [SerializeField]
     private float _fireRate = 0.5f;
@@ -84,6 +86,11 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire)
         {
             FireLaser();                  
+        }
+
+        if (Input.GetKeyDown(KeyCode.M) && Time.time > _canFire)
+        {
+            FireMissile();
         }
     }
     
@@ -163,6 +170,14 @@ public class Player : MonoBehaviour
         }
         convertAmmoToString = ammoCount.ToString();
         textToScreen.text = convertAmmoToString;
+    }
+
+    void FireMissile()
+    {        
+        _canFire = Time.time + _fireRate;
+        
+        Instantiate(_missilePrefab, transform.position + new Vector3(0, 1.05f, 0), Quaternion.identity);
+        
     }
 
     public void Damage()
