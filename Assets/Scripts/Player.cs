@@ -234,6 +234,30 @@ public class Player : MonoBehaviour
         textToScreen.text = convertAmmoToString;
     }
 
+    public void HealthDrop()
+    {
+        if (_lives < 3)
+        {
+            _lives++;
+
+            if (_lives == 2)
+            {
+                _rightEngine.SetActive(false);
+            }
+            else
+            {
+                _leftEngine.SetActive(false);
+            }
+
+            _uiManager.UpdateLives(_lives);
+        }
+        else
+        {
+            _lives = 3;
+        }
+
+    }
+
     public void ShieldHealthMechanics()
     {
         _shieldLevel--;
