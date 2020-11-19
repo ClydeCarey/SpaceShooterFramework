@@ -11,6 +11,8 @@ public class SpawnManager : MonoBehaviour
     private GameObject _enemyContainer;
     [SerializeField]
     private GameObject[] powerups;
+    [SerializeField]
+    private GameObject[] secondaryPowerups;
 
     private bool _stopSpawning = false;
 
@@ -19,6 +21,7 @@ public class SpawnManager : MonoBehaviour
     {
         StartCoroutine(SpawnEnemyRoutine());
         StartCoroutine(SpawnPowerupRoutine());
+        StartCoroutine(SpawnSecondaryFireRoutine());
     }
 
     // Update is called once per frame
@@ -51,6 +54,19 @@ public class SpawnManager : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(3, 8));
         }
     }
+
+    IEnumerator SpawnSecondaryFireRoutine()
+    {
+        yield return new WaitForSeconds(10.0f);
+        while (_stopSpawning == false)
+        {
+            Vector3 posToSpawn = new Vector3(Random.Range(-8.0f, 8.0f), 7, 0);
+            int secondaryPowerupID = 0; //Random.Range(0, 6);
+            Instantiate(secondaryPowerups[secondaryPowerupID], posToSpawn, Quaternion.identity);
+            yield return new WaitForSeconds(10.0f);
+        }
+    }
+
     public void OnPlayerDeath()
     {
         _stopSpawning = true;

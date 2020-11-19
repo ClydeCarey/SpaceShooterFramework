@@ -1301,7 +1301,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1245862699}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.020965576, y: 0.02, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.0846902, y: 1.0818775, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1345,7 +1345,9 @@ MonoBehaviour:
     type: 3}
   _tripleShotPrefab: {fileID: 5683450069082620806, guid: 6ba7cfd9ff9943247aae6075fc556f60,
     type: 3}
-  _missilePrefab: {fileID: 8821244327483990519, guid: db571cdc101469041867b559158fea90,
+  _missile1Prefab: {fileID: 8821244327483990519, guid: db571cdc101469041867b559158fea90,
+    type: 3}
+  _missile2Prefab: {fileID: 8821244327483990519, guid: db571cdc101469041867b559158fea90,
     type: 3}
   _fireRate: 0.15
   ammoCount: 15
@@ -1417,7 +1419,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1255444456}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -4.2, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 214757547}
@@ -1808,6 +1810,8 @@ MonoBehaviour:
   - {fileID: 8712363953464134287, guid: fd6c28f7d48d80545879670d794c102b, type: 3}
   - {fileID: 2809838265735713253, guid: 1895442774db03e41baba15e37209cf3, type: 3}
   - {fileID: 6785455685987327496, guid: 99ec412a729aa9844a9f129b6d999f83, type: 3}
+  secondaryPowerups:
+  - {fileID: 3191753050551957705, guid: 07a1d4e23d1347c4faca2d190afdbc0d, type: 3}
 --- !u!4 &1582386955
 Transform:
   m_ObjectHideFlags: 0

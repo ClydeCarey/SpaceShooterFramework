@@ -17,7 +17,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject _tripleShotPrefab;
     [SerializeField]
-    private GameObject _missilePrefab;
+    private GameObject _missile1Prefab;
+    [SerializeField]
+    private GameObject _missile2Prefab;
 
     [SerializeField]
     private float _fireRate = 0.5f;
@@ -176,8 +178,9 @@ public class Player : MonoBehaviour
     {        
         _canFire = Time.time + _fireRate;
         
-        Instantiate(_missilePrefab, transform.position + new Vector3(0, 1.05f, 0), Quaternion.identity);
-        
+        Instantiate(_missile1Prefab, transform.position + new Vector3(0, 1.05f, 0), Quaternion.identity);
+        Instantiate(_missile2Prefab, transform.position + new Vector3(0, 1.05f, 0), Quaternion.identity);
+
     }
 
     public void Damage()
@@ -294,6 +297,11 @@ public class Player : MonoBehaviour
                 return;
         }
         
+    }
+
+    public void SecondaryFire()
+    {
+
     }
 
     public void AddScore(int points)

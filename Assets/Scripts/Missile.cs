@@ -13,12 +13,14 @@ public class Missile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MissileMoveUp();
+        Missile1MoveUp(); 
+        Missile2MoveUp();
     }
 
-    void MissileMoveUp()
+    void Missile1MoveUp()
     {
-        transform.Translate(Vector3.up * _missileSpeed * Time.deltaTime);
+        //transform.Translate(Vector3.up * _missileSpeed * Time.deltaTime);
+        transform.Translate(new Vector3(-5, 1) * _missileSpeed * Time.deltaTime);
 
         if (transform.position.y > 8.0f)
         {
@@ -30,5 +32,21 @@ public class Missile : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-   
+
+    void Missile2MoveUp()
+    {
+        //transform.Translate(Vector3.up * _missileSpeed * Time.deltaTime);
+        transform.Translate(new Vector3(-1, 1) * _missileSpeed * Time.deltaTime);
+
+        if (transform.position.y > 8.0f)
+        {
+            if (transform.parent != null)
+            {
+                Destroy(transform.parent.gameObject);
+            }
+
+            Destroy(this.gameObject);
+        }
+    }
+
 }
