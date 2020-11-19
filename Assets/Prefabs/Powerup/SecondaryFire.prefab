@@ -144,5 +144,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 3
-  powerupID: 0
+  powerupID: 5
   _clip: {fileID: 8300000, guid: 4630faa88003d874c85cc0f6bbd0b03d, type: 3}

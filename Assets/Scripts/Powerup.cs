@@ -51,6 +51,7 @@ public class Powerup : MonoBehaviour
                         break;
                     case 5:
                         player.SecondaryFire();
+                        //Debug.Log("secondayfire is triggered in powerup");
                         break;
                     default:
                         Debug.Log("Default Value");

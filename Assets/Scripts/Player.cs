@@ -5,7 +5,11 @@ using UnityEngine;
 using TMPro;
 
 public class Player : MonoBehaviour
-{       
+{
+    private bool _secondaryFireIsActive = false;
+    public bool isSecondaryFireActive = false;
+
+
     [SerializeField]
     private float _speed = 3.5f;
     private float _speedMultiplier = 2.0f;
@@ -58,7 +62,8 @@ public class Player : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {        
+    {
+        _secondaryFireIsActive = false;
         transform.position = new Vector3(0, 0, 0);
         _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>();
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
@@ -301,7 +306,9 @@ public class Player : MonoBehaviour
 
     public void SecondaryFire()
     {
-
+        Debug.Log("secondary is called in player");
+        _secondaryFireIsActive = true;
+        isSecondaryFireActive = true;
     }
 
     public void AddScore(int points)
