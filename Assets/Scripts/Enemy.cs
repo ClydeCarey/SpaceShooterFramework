@@ -89,12 +89,32 @@ public class Enemy : MonoBehaviour
                 _player.AddScore(10);
             }
 
+
+
             _anim.SetTrigger("OnEnemyDeath");
             //_speed = 0;
             transform.GetComponent<BoxCollider2D>().enabled = false;
             _audioSource.Play();
             Destroy(this.gameObject,2.0f);            
         }
+
+        if (other.tag == "Missile")
+        {
+            Destroy(other.gameObject);
+            if (_player != null)
+            {
+                _player.AddScore(10);
+            }
+
+
+
+            _anim.SetTrigger("OnEnemyDeath");
+            //_speed = 0;
+            transform.GetComponent<BoxCollider2D>().enabled = false;
+            _audioSource.Play();
+            Destroy(this.gameObject, 2.0f);
+        }
     }
+    
     
 }

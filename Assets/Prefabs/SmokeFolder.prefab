@@ -4820,6 +4820,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Missile
       objectReference: {fileID: 0}
+    - target: {fileID: 7022816362309431632, guid: 8afe8fc6eff1919429bb1159b6aaa231,
+        type: 3}
+      propertyPath: m_TagString
+      value: Missile
+      objectReference: {fileID: 0}
     - target: {fileID: 7022816362309431643, guid: 8afe8fc6eff1919429bb1159b6aaa231,
         type: 3}
       propertyPath: m_LocalPosition.x
