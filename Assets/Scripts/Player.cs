@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
 
     
 {
+    public CameraShake cameraShake;
+
     public GameObject bgMusic1;
     public GameObject bgMusic2;
     
@@ -79,10 +81,7 @@ public class Player : MonoBehaviour
         _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>();
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
         _audiosource = GetComponent<AudioSource>();
-        _emptyChamber = GetComponent<AudioSource>();
-        //string convertAmmoToString;
-        //convertAmmoToString = ammoCount.ToString();
-        //textToScreen.text = convertAmmoToString;
+        _emptyChamber = GetComponent<AudioSource>();       
 
         if(_spawnManager == null)
         {
@@ -202,15 +201,7 @@ public class Player : MonoBehaviour
         Instantiate(_missile5Prefab, transform.position + new Vector3(0, -1, 0), Quaternion.identity);
 
     }
-
-    //void FireMissile2()
-    //{
-    //    _canFire = Time.time + _fireRate;
-
-    //    //Instantiate(_missile1Prefab, transform.position + new Vector3(0, 1.05f, 0), Quaternion.identity);
-    //    Instantiate(_missile2Prefab, transform.position + new Vector3(0, 1.05f, 0), Quaternion.identity);
-
-    //}
+    
 
     public void Damage()
     {
@@ -218,7 +209,11 @@ public class Player : MonoBehaviour
         {
             ShieldHealthMechanics();            
             return;
-        }       
+        }
+
+        //camera shake effect
+        StartCoroutine(cameraShake.Shake(0.15f, 0.4f));
+
         _lives--;
 
         if (_lives == 2)

@@ -63,7 +63,7 @@ public class SpawnManager : MonoBehaviour
             Vector3 posToSpawn = new Vector3(Random.Range(-8.0f, 8.0f), 7, 0);
             int secondaryPowerupID = 0; //Random.Range(0, 6);
             Instantiate(secondaryPowerups[secondaryPowerupID], posToSpawn, Quaternion.identity);
-            yield return new WaitForSeconds(10.0f);
+            yield return new WaitForSeconds(30.0f);
         }
     }
 
