@@ -22,22 +22,22 @@ public class BackGroundMusic : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (_player.isSecondaryFireActive == true)
-        {
-            //play sound 2
-            _bgMusicSource.clip = _secondaryFireClip;
-            Debug.Log("secondary is active!!!!");
-            //_secondaryFireSource.Play();
-        }
+    //void Update()
+    //{
+    //    if (_player.isSecondaryFireActive == true)
+    //    {
+    //        //play sound 2
+    //        _bgMusicSource.clip = _secondaryFireClip;
+    //        Debug.Log("secondary is active!!!!");
+    //        //_secondaryFireSource.Play();
+    //    }
         
-        else
-        {
-            _bgMusicSource.clip = _bgMusicClip;
-            //_bgMusicSource.Play();
+    //    else
+    //    {
+    //        _bgMusicSource.clip = _bgMusicClip;
+    //        //_bgMusicSource.Play();
 
-        }
-        //_bgMusicSource.Play();
-    }
+    //    }
+    //    //_bgMusicSource.Play();
+    //}
 }

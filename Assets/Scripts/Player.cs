@@ -5,7 +5,12 @@ using UnityEngine;
 using TMPro;
 
 public class Player : MonoBehaviour
+
+    
 {
+    public GameObject bgMusic1;
+    public GameObject bgMusic2;
+    
     private bool _secondaryFireIsActive = false;
     public bool isSecondaryFireActive = false;
 
@@ -98,6 +103,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.M) && Time.time > _canFire)
         {
             FireMissile();
+            FireMissile2();
         }
     }
     
@@ -184,6 +190,15 @@ public class Player : MonoBehaviour
         _canFire = Time.time + _fireRate;
         
         Instantiate(_missile1Prefab, transform.position + new Vector3(0, 1.05f, 0), Quaternion.identity);
+        //Instantiate(_missile2Prefab, transform.position + new Vector3(0, 1.05f, 0), Quaternion.identity);
+
+    }
+
+    void FireMissile2()
+    {
+        _canFire = Time.time + _fireRate;
+
+        //Instantiate(_missile1Prefab, transform.position + new Vector3(0, 1.05f, 0), Quaternion.identity);
         Instantiate(_missile2Prefab, transform.position + new Vector3(0, 1.05f, 0), Quaternion.identity);
 
     }
@@ -285,7 +300,8 @@ public class Player : MonoBehaviour
     {
         _shieldLevel--;
         switch (_shieldLevel)
-        {
+        {            
+            
             default:
                  return;
             case 2:
@@ -305,12 +321,28 @@ public class Player : MonoBehaviour
     }
 
     public void SecondaryFire()
-    {
-        Debug.Log("secondary is called in player");
+    {        
+        Debug.Log("Secondary is called");
+
+        StartCoroutine(SecondaryTimer());
+
         _secondaryFireIsActive = true;
         isSecondaryFireActive = true;
+
+        
     }
 
+    IEnumerator SecondaryTimer()
+    {
+        bgMusic1.SetActive(false);
+        bgMusic2.SetActive(true);
+
+        yield return new WaitForSeconds(7.01f);
+
+        bgMusic1.SetActive(true);
+        bgMusic2.SetActive(false);
+
+    }
     public void AddScore(int points)
     {
         _score += points;

@@ -1,27 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!50 &4378239025471764997
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6738230290133498089}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!1 &8821244327483990519
+--- !u!1 &4638851845531582723
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -29,40 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8821244327483990516}
-  - component: {fileID: 8821244327483989514}
-  - component: {fileID: 8821244327483990517}
-  - component: {fileID: 2786127550941652656}
-  - component: {fileID: 7892131367567822111}
+  - component: {fileID: 4638851845531582720}
+  - component: {fileID: 4638851845531598590}
+  - component: {fileID: 4638851845531582721}
+  - component: {fileID: 2063081739856758340}
+  - component: {fileID: 6308877313028566507}
   m_Layer: 9
-  m_Name: SmokeFolder
+  m_Name: SmokeFolder2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8821244327483990516
+--- !u!4 &4638851845531582720
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8821244327483990519}
+  m_GameObject: {fileID: 4638851845531582723}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.53, y: -1.7, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
-  - {fileID: 6738230290133498082}
+  - {fileID: 7460451823709624342}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!198 &8821244327483989514
+--- !u!198 &4638851845531598590
 ParticleSystem:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8821244327483990519}
+  m_GameObject: {fileID: 4638851845531582723}
   serializedVersion: 6
   lengthInSec: 5
   simulationSpeed: 1
@@ -4714,14 +4693,14 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!199 &8821244327483990517
+--- !u!199 &4638851845531582721
 ParticleSystemRenderer:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8821244327483990519}
+  m_GameObject: {fileID: 4638851845531582723}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -4778,13 +4757,13 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!58 &2786127550941652656
+--- !u!58 &2063081739856758340
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8821244327483990519}
+  m_GameObject: {fileID: 4638851845531582723}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -4794,26 +4773,47 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &7892131367567822111
+--- !u!114 &6308877313028566507
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8821244327483990519}
+  m_GameObject: {fileID: 4638851845531582723}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c62373cf3f805b047bf97a7d655a3229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _missileSpeed: 8
-  _smoke: {fileID: 8821244327483990519}
---- !u!1001 &4392433480293550521
+  _smoke: {fileID: 4638851845531582723}
+--- !u!50 &489054962793356017
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7460451823709624349}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!1001 &504076800719169869
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 8821244327483990516}
+    m_TransformParent: {fileID: 4638851845531582720}
     m_Modifications:
     - target: {fileID: 7022816362309431632, guid: 8afe8fc6eff1919429bb1159b6aaa231,
         type: 3}
@@ -4887,15 +4887,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8afe8fc6eff1919429bb1159b6aaa231, type: 3}
---- !u!1 &6738230290133498089 stripped
+--- !u!1 &7460451823709624349 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7022816362309431632, guid: 8afe8fc6eff1919429bb1159b6aaa231,
     type: 3}
-  m_PrefabInstance: {fileID: 4392433480293550521}
+  m_PrefabInstance: {fileID: 504076800719169869}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &6738230290133498082 stripped
+--- !u!4 &7460451823709624342 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7022816362309431643, guid: 8afe8fc6eff1919429bb1159b6aaa231,
     type: 3}
-  m_PrefabInstance: {fileID: 4392433480293550521}
+  m_PrefabInstance: {fileID: 504076800719169869}
   m_PrefabAsset: {fileID: 0}
