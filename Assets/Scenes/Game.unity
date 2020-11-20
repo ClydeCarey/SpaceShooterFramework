@@ -1606,6 +1606,12 @@ MonoBehaviour:
     type: 3}
   _missile2Prefab: {fileID: 4638851845531582723, guid: 5bcb827e9f10d4c4ebbad2e70ebbb308,
     type: 3}
+  _missile3Prefab: {fileID: 9126519112992211097, guid: 51eebbf653baee040a8e34e0f74a5687,
+    type: 3}
+  _missile4Prefab: {fileID: 4630402355276098776, guid: c79462dabdf168f4884948cad77ba3f7,
+    type: 3}
+  _missile5Prefab: {fileID: 7245643928748589814, guid: 644ecd876e90a394aa2530f5bcaee6f9,
+    type: 3}
   _fireRate: 0.15
   ammoCount: 15
   textToScreen: {fileID: 1990704800}

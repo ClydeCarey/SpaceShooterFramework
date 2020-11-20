@@ -29,6 +29,12 @@ public class Player : MonoBehaviour
     private GameObject _missile1Prefab;
     [SerializeField]
     private GameObject _missile2Prefab;
+    [SerializeField]
+    private GameObject _missile3Prefab;
+    [SerializeField]
+    private GameObject _missile4Prefab;
+    [SerializeField]
+    private GameObject _missile5Prefab;
 
     [SerializeField]
     private float _fireRate = 0.5f;
@@ -94,16 +100,15 @@ public class Player : MonoBehaviour
     {
         SetThrusterSpeed();
         CalculateMovement();
-
-        if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire)
+        
+        if (Input.GetKeyDown(KeyCode.Space) && _secondaryFireIsActive == false && Time.time > _canFire)
         {
             FireLaser();                  
         }
 
-        if (Input.GetKeyDown(KeyCode.M) && Time.time > _canFire)
+        if (Input.GetKeyDown(KeyCode.Space) && _secondaryFireIsActive == true && Time.time > _canFire)
         {
-            FireMissile();
-            //FireMissile2();
+            FireMissile();            
         }
     
     }
@@ -190,8 +195,11 @@ public class Player : MonoBehaviour
     {        
         _canFire = Time.time + _fireRate;
         
-        Instantiate(_missile1Prefab, transform.position + new Vector3(-1, 0.05f, 0), Quaternion.identity);
-        Instantiate(_missile2Prefab, transform.position + new Vector3(0, 1.05f, 0), Quaternion.identity);
+        Instantiate(_missile1Prefab, transform.position + new Vector3(0, -1, 0), Quaternion.identity);
+        Instantiate(_missile2Prefab, transform.position + new Vector3(0, -1, 0), Quaternion.identity);
+        Instantiate(_missile3Prefab, transform.position + new Vector3(0, -1, 0), Quaternion.identity);
+        Instantiate(_missile4Prefab, transform.position + new Vector3(0, -1, 0), Quaternion.identity);
+        Instantiate(_missile5Prefab, transform.position + new Vector3(0, -1, 0), Quaternion.identity);
 
     }
 
@@ -322,26 +330,23 @@ public class Player : MonoBehaviour
     }
 
     public void SecondaryFire()
-    {        
-        Debug.Log("Secondary is called");
-
-        StartCoroutine(SecondaryTimer());
-
+    {
         _secondaryFireIsActive = true;
-        isSecondaryFireActive = true;
-
-        
+        StartCoroutine(SecondaryTimer());
+ 
     }
 
     IEnumerator SecondaryTimer()
     {
         bgMusic1.SetActive(false);
         bgMusic2.SetActive(true);
+        //bgMusic1.GetComponent<AudioSource>().enabled = false;
 
         yield return new WaitForSeconds(7.01f);
 
         bgMusic1.SetActive(true);
         bgMusic2.SetActive(false);
+        _secondaryFireIsActive = false;
 
     }
     public void AddScore(int points)

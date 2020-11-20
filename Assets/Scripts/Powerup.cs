@@ -50,8 +50,7 @@ public class Powerup : MonoBehaviour
                         player.HealthDrop();
                         break;
                     case 5:
-                        player.SecondaryFire();
-                        //Debug.Log("secondayfire is triggered in powerup");
+                        player.SecondaryFire();                        
                         break;
                     default:
                         Debug.Log("Default Value");

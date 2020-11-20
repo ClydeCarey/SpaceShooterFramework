@@ -20,7 +20,7 @@ public class Missile : MonoBehaviour
     void Missile1MoveUp()
     {
         //transform.Translate(Vector3.up * _missileSpeed * Time.deltaTime);
-        transform.Translate(new Vector3(-5, 1) * _missileSpeed * Time.deltaTime);
+        transform.Translate(new Vector3(Random.Range(-4f, -0f), Random.Range(0.5f, 2f)) * _missileSpeed * Time.deltaTime);
         
         if (transform.position.y > 18.0f)
         {
