@@ -14,9 +14,14 @@ public class CrazyAnt : MonoBehaviour
     private float _fireRate = 3.0f;
     private float _canFire = -1;
 
+    private int randomX = 0;
+    private int randomY = 0;
+
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(RandomValues());
+
         _player = GameObject.Find("Player").GetComponent<Player>();
         _audioSource = GetComponent<AudioSource>();
 
@@ -38,6 +43,7 @@ public class CrazyAnt : MonoBehaviour
     void Update()
     {
         CalculateMovement();
+        
 
         if (Time.time > _canFire)
         {
@@ -51,10 +57,20 @@ public class CrazyAnt : MonoBehaviour
             }
         }
     }
-
+    IEnumerator RandomValues()
+    {
+        while(true)
+        {            
+            randomX = Random.Range(-1, 2);
+            randomY = Random.Range(-1, 2);
+            yield return new WaitForSeconds(Random.Range(1.3f, 2.8f));  //(4.0f); 
+        }
+             
+    }
     void CalculateMovement()
     {
-        transform.Translate(Vector3.down * _speed * Time.deltaTime);
+        //transform.Translate(Vector3.down * _speed * Time.deltaTime);
+        transform.Translate(new Vector3(randomX, randomY) * _speed * Time.deltaTime);
 
         if (transform.position.y < -5.0f)
         {

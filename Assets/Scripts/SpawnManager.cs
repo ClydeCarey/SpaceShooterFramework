@@ -8,6 +8,8 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private GameObject _enemyPrefab;
     [SerializeField]
+    private GameObject _crazyAntPrefab;
+    [SerializeField]
     private GameObject _enemyContainer;
     [SerializeField]
     private GameObject[] powerups;
@@ -50,9 +52,9 @@ public class SpawnManager : MonoBehaviour
         while (_stopSpawning == false)
         {
             Vector3 posToSpawn = new Vector3(Random.Range(-8.0f, 8.0f), 7, 0);
-            GameObject newEnemy = Instantiate(_enemyPrefab, posToSpawn, Quaternion.identity);
+            GameObject newEnemy = Instantiate(_crazyAntPrefab, posToSpawn, Quaternion.identity);
             newEnemy.transform.parent = _enemyContainer.transform;
-            yield return new WaitForSeconds(5.0f);
+            yield return new WaitForSeconds(7.0f);
 
         }
     }
@@ -77,7 +79,7 @@ public class SpawnManager : MonoBehaviour
             Vector3 posToSpawn = new Vector3(Random.Range(-8.0f, 8.0f), 7, 0);
             int secondaryPowerupID = 0; //Random.Range(0, 6);
             Instantiate(secondaryPowerups[secondaryPowerupID], posToSpawn, Quaternion.identity);
-            yield return new WaitForSeconds(30.0f);
+            yield return new WaitForSeconds(15.0f);
         }
     }
 

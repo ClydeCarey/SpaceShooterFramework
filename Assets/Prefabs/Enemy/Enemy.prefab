@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4380007606600593147}
-  - component: {fileID: 2798764057786747196}
   - component: {fileID: 4707749237657615204}
   - component: {fileID: -1851320871516726026}
   - component: {fileID: 1365134073594900611}
   - component: {fileID: 6653237217431655328}
   - component: {fileID: -1589609597088241545}
+  - component: {fileID: -4860180401546589006}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -36,20 +36,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2798764057786747196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4380007606600593151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db12721664152e344961bc37d777b683, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _laserPrefab: {fileID: 2798961572320112798, guid: de698cbb3ecb6e54d83e12ff546fd048,
-    type: 3}
 --- !u!212 &4707749237657615204
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -262,3 +248,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-4860180401546589006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4380007606600593151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b9cefd293ffb6b45a0f05e82656cf51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _laserPrefab: {fileID: 2798961572320112798, guid: de698cbb3ecb6e54d83e12ff546fd048,
+    type: 3}
