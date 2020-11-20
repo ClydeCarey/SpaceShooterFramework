@@ -20,6 +20,7 @@ public class SpawnManager : MonoBehaviour
     public void StartSpawning()
     {
         StartCoroutine(SpawnEnemyRoutine());
+        StartCoroutine(SpawnCrazyAntRoutine());
         StartCoroutine(SpawnPowerupRoutine());
         StartCoroutine(SpawnSecondaryFireRoutine());
     }
@@ -40,6 +41,19 @@ public class SpawnManager : MonoBehaviour
             newEnemy.transform.parent = _enemyContainer.transform;
             yield return new WaitForSeconds(5.0f);
                 
+        }
+    }
+
+    IEnumerator SpawnCrazyAntRoutine()
+    {
+        yield return new WaitForSeconds(3.0f);
+        while (_stopSpawning == false)
+        {
+            Vector3 posToSpawn = new Vector3(Random.Range(-8.0f, 8.0f), 7, 0);
+            GameObject newEnemy = Instantiate(_enemyPrefab, posToSpawn, Quaternion.identity);
+            newEnemy.transform.parent = _enemyContainer.transform;
+            yield return new WaitForSeconds(5.0f);
+
         }
     }
 
