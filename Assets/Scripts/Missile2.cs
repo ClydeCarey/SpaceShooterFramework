@@ -37,7 +37,7 @@ public class Missile2 : MonoBehaviour
     {
         Debug.Log("missile2Moveupcalled");
         //transform.Translate(Vector3.up * _missileSpeed * Time.deltaTime);
-        transform.Translate(new Vector3(-10, 1) * _missileSpeed * Time.deltaTime);
+        transform.Translate(new Vector3(0, 1) * _missileSpeed * Time.deltaTime);
 
         if (transform.position.y > 18.0f)
         {

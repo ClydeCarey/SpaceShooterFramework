@@ -103,8 +103,9 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.M) && Time.time > _canFire)
         {
             FireMissile();
-            FireMissile2();
+            //FireMissile2();
         }
+    
     }
     
     void SetThrusterSpeed()
@@ -189,19 +190,19 @@ public class Player : MonoBehaviour
     {        
         _canFire = Time.time + _fireRate;
         
-        Instantiate(_missile1Prefab, transform.position + new Vector3(0, 1.05f, 0), Quaternion.identity);
-        //Instantiate(_missile2Prefab, transform.position + new Vector3(0, 1.05f, 0), Quaternion.identity);
-
-    }
-
-    void FireMissile2()
-    {
-        _canFire = Time.time + _fireRate;
-
-        //Instantiate(_missile1Prefab, transform.position + new Vector3(0, 1.05f, 0), Quaternion.identity);
+        Instantiate(_missile1Prefab, transform.position + new Vector3(-1, 0.05f, 0), Quaternion.identity);
         Instantiate(_missile2Prefab, transform.position + new Vector3(0, 1.05f, 0), Quaternion.identity);
 
     }
+
+    //void FireMissile2()
+    //{
+    //    _canFire = Time.time + _fireRate;
+
+    //    //Instantiate(_missile1Prefab, transform.position + new Vector3(0, 1.05f, 0), Quaternion.identity);
+    //    Instantiate(_missile2Prefab, transform.position + new Vector3(0, 1.05f, 0), Quaternion.identity);
+
+    //}
 
     public void Damage()
     {
