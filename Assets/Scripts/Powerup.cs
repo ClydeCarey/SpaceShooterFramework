@@ -25,20 +25,22 @@ public class Powerup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "EnemyLaser")
-        {
-            Debug.Log("hit by enemy laser");
-        }
-        if (other.tag == "Player")
-        {
-            Player player = other.transform.GetComponent<Player>();
+       
 
+        //if (other.tag == "Laser")
+        //{
+        //    Debug.Log("hit by enemy laser");
+        //}
+        if (other.tag == "Player" || other.tag == "Laser")
+        {            
+            Player player = other.transform.GetComponent<Player>();
+            
             AudioSource.PlayClipAtPoint(_clip, transform.position, 1.5f);
             if(player != null)
             {
                 switch (powerupID)
                 {
-                    case 0:
+                    case 0:                        
                         player.TripleShotActive();
                         break;
                     case 1:
