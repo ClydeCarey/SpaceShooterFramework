@@ -25,6 +25,10 @@ public class Powerup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.tag == "player")
+        {
+            Debug.Log("hit by enemy laser");
+        }
         if (other.tag == "Player")
         {
             Player player = other.transform.GetComponent<Player>();
