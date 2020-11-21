@@ -10,12 +10,27 @@ public class Powerup : MonoBehaviour
     [SerializeField]
     private int powerupID;
     [SerializeField]
-    private AudioClip _clip;    
+    private AudioClip _clip;
+
+    private float _collectSpeed = 2.0f;
+    //public Vector3 _playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position; see if public transform works better
+    public Transform playerTransform;
     
     // Update is called once per frame
     void Update()
     {
         transform.Translate(Vector3.down * _speed * Time.deltaTime);
+
+        if(Input.GetKeyDown(KeyCode.C))
+        {
+            
+            //var pos = transform.position;
+            //transform.position = Vector3.Lerp(pos, playerPosition.position, 1.0f);
+
+            //transform.Translate(Vector3.right * _collectSpeed * Time.deltaTime);
+            //_playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
+            Debug.Log(playerTransform.position);
+        }
 
         if(transform.position.y < -4.5f)
         {

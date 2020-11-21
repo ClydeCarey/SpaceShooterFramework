@@ -73,6 +73,9 @@ public class Player : MonoBehaviour
     private AudioSource _audiosource;
     private AudioSource _emptyChamber;
 
+    private GameObject[] _powerUpIcons;
+    private float _collectSpeed = 2.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -110,7 +113,18 @@ public class Player : MonoBehaviour
             FireMissile();            
         }
     
+        //if (Input.GetKeyDown(KeyCode.C))
+        //{
+        //    PullPowerups();
+        //}
     }
+    
+    //void PullPowerups()
+    //{
+    //    Debug.Log("Pull Powerups function");
+    //    _powerUpIcons = GameObject.FindGameObjectsWithTag("PowerupIcon");
+    //    foreach (GameObject p in _powerUpIcons) p.transform.Translate(Vector3.right * _collectSpeed * Time.deltaTime); 
+    //}
     
     void SetThrusterSpeed()
     {
