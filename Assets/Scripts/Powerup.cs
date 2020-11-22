@@ -12,19 +12,19 @@ public class Powerup : MonoBehaviour
     [SerializeField]
     private AudioClip _clip;
         
-    public Vector3 _playerPosition; 
+    //public Vector3 _playerPosition; 
  
     void Update()
     {
         transform.Translate(Vector3.down * _speed * Time.deltaTime);
 
-        if (Input.GetKey(KeyCode.C))
-        {
-            _playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
-            var pos = transform.position;
-            transform.position = Vector3.Lerp(pos, _playerPosition, 0.01f);
+        //if (Input.GetKey(KeyCode.C))
+        //{
+        //    _playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
+        //    var pos = transform.position;
+        //    transform.position = Vector3.Lerp(pos, _playerPosition, 0.01f);
                         
-        }
+        //}
 
         if (transform.position.y < -4.5f)
         {
