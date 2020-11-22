@@ -16,24 +16,23 @@ public class Powerup : MonoBehaviour
     //private float _collectSpeed = 2.0f;
     public Vector3 _playerPosition; //= GameObject.FindGameObjectWithTag("Player").transform.position; //see if public transform works better
     //public Transform playerTransform;
-    
+    //    //var pos = transform.position;
+
     // Update is called once per frame
     void Update()
     {
         transform.Translate(Vector3.down * _speed * Time.deltaTime);
 
-        //if(Input.GetKeyDown(KeyCode.C))
-        //{
+        if (Input.GetKey(KeyCode.C))
+        {
+            _playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
+            var pos = transform.position;
+            transform.position = Vector3.Lerp(pos, _playerPosition, 0.01f);
+
             
-        ////    //var pos = transform.position;
-        ////    //transform.position = Vector3.Lerp(pos, playerPosition.position, 1.0f);
+        }
 
-        ////    //transform.Translate(Vector3.right * _collectSpeed * Time.deltaTime);
-        //    _playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
-        //    Debug.Log(_playerPosition);
-        //}
-
-        if(transform.position.y < -4.5f)
+        if (transform.position.y < -4.5f)
         {
             Destroy(this.gameObject);
         }
