@@ -11,14 +11,9 @@ public class Powerup : MonoBehaviour
     private int powerupID;
     [SerializeField]
     private AudioClip _clip;
-
-
-    //private float _collectSpeed = 2.0f;
-    public Vector3 _playerPosition; //= GameObject.FindGameObjectWithTag("Player").transform.position; //see if public transform works better
-    //public Transform playerTransform;
-    //    //var pos = transform.position;
-
-    // Update is called once per frame
+        
+    public Vector3 _playerPosition; 
+ 
     void Update()
     {
         transform.Translate(Vector3.down * _speed * Time.deltaTime);
@@ -28,8 +23,7 @@ public class Powerup : MonoBehaviour
             _playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
             var pos = transform.position;
             transform.position = Vector3.Lerp(pos, _playerPosition, 0.01f);
-
-            
+                        
         }
 
         if (transform.position.y < -4.5f)
@@ -41,11 +35,6 @@ public class Powerup : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
        
-
-        //if (other.tag == "Laser")
-        //{
-        //    Debug.Log("hit by enemy laser");
-        //}
         if (other.tag == "Player" || other.tag == "Laser")
         {            
             Player player = other.transform.GetComponent<Player>();
