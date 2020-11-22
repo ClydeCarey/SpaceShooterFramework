@@ -23,7 +23,7 @@ public class Powerup : MonoBehaviour
         //    _playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
         //    var pos = transform.position;
         //    transform.position = Vector3.Lerp(pos, _playerPosition, 0.01f);
-                        
+
         //}
 
         if (transform.position.y < -4.5f)

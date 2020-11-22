@@ -5,35 +5,40 @@ using UnityEngine;
 public class PickupController : MonoBehaviour
 {
     [SerializeField]
-    private Transform _playerPosition;
+    private Transform _playerTransform;
     [SerializeField]
-    private Transform _ammoBoxPosition;
+    private Transform _ammoBoxTransform;
     [SerializeField]    
-    private Transform _healthPickupPosition;
+    private Transform _healthPickupTransform;
     [SerializeField]
-    private Transform _secondaryFirePickupPosition;
+    private Transform _secondaryFirePickupTransform;
     [SerializeField]
-    private Transform _shieldPosition;
+    private Transform _shieldPickupTransform;
     [SerializeField]
-    private Transform _speedPickupPosition;
+    private Transform _speedPickupTransform;
     [SerializeField]
-    private Transform _tripleshotPickupPosition;
+    private Transform _tripleshotPickupTransform;
 
     // Start is called before the first frame update
     void Start()
     {
-        //
+        
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {        
+
         if (Input.GetKey(KeyCode.C))
         {
-            Debug.Log("I pressed C");
-            //    _playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
-            //    var pos = transform.position;
-            //    transform.position = Vector3.Lerp(pos, _playerPosition, 0.01f);
+            //Debug.Log("I pressed C");
+                        
+            _ammoBoxTransform.position = Vector3.Lerp(_ammoBoxTransform.position, _playerTransform.position, 0.25f);
+
+            //Debug.Log($"Player position: {_playerTransform.position}");
+            //Debug.Log($"Ammo box position: {_ammoBoxTransform.position}");
+
+
         }
     }
 }
