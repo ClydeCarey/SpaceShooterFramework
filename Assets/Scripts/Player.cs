@@ -12,7 +12,8 @@ public class Player : MonoBehaviour
 
     public GameObject bgMusic1;
     public GameObject bgMusic2;
-    
+    public GameObject bgMusic3;
+
     private bool _secondaryFireIsActive = false;
     public bool isSecondaryFireActive = false;
 
@@ -345,19 +346,43 @@ public class Player : MonoBehaviour
  
     }
 
+    public void NegativePowerup()
+    {
+        _speed = 1.0f;
+        StartCoroutine(NegativePowerupTimer());
+
+    }
+
     IEnumerator SecondaryTimer()
     {
         bgMusic1.SetActive(false);
         bgMusic2.SetActive(true);
-        //bgMusic1.GetComponent<AudioSource>().enabled = false;
+        bgMusic3.SetActive(false);        
 
         yield return new WaitForSeconds(7.01f);
 
         bgMusic1.SetActive(true);
         bgMusic2.SetActive(false);
+        bgMusic3.SetActive(false);
         _secondaryFireIsActive = false;
 
     }
+
+    IEnumerator NegativePowerupTimer()
+    {
+        bgMusic1.SetActive(false);
+        bgMusic2.SetActive(false);
+        bgMusic3.SetActive(true);        
+
+        yield return new WaitForSeconds(9.91f);
+
+        bgMusic1.SetActive(true);
+        bgMusic2.SetActive(false);
+        bgMusic3.SetActive(false);
+        _speed = 3.5f;
+
+    }
+
     public void AddScore(int points)
     {
         _score += points;
