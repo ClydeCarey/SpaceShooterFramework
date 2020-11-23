@@ -262,3 +262,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _laserPrefab: {fileID: 2798961572320112798, guid: de698cbb3ecb6e54d83e12ff546fd048,
     type: 3}
+  _kamikazeSpeed: 0.05

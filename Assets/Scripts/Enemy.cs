@@ -14,6 +14,11 @@ public class Enemy : MonoBehaviour
     private float _fireRate =3.0f;
     private float _canFire = -1;
 
+    private Vector3 _playerPositionEnemyScript;
+    private Vector3 _distanceToPlayer;
+    [SerializeField]
+    private float _kamikazeSpeed = 0.05f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,13 +60,24 @@ public class Enemy : MonoBehaviour
 
     void CalculateMovement()
     {
+        _playerPositionEnemyScript = GameObject.FindGameObjectWithTag("Player").transform.position;
+        //Debug.Log("playerposition " + _playerPositionEnemyScript);
+        _distanceToPlayer = _playerPositionEnemyScript - transform.position;
+        //Debug.Log("distance to player is " + _distanceToPlayer);
+
         transform.Translate(Vector3.down * _speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, _playerPositionEnemyScript, _kamikazeSpeed);
 
         if (transform.position.y < -5.0f)
         {
             float randomX = Random.Range(-8.0f, 8.0f);
             transform.position = new Vector3(randomX, 7, 0);
         }
+
+        //if (true)
+        //{
+
+        //}
     }
 
     private void OnTriggerEnter2D(Collider2D other)   
@@ -82,7 +98,7 @@ public class Enemy : MonoBehaviour
             Destroy(this.gameObject, 2.0f);            
         }
 
-        if (other.tag == "Laser")
+        if (other.tag == "Laser" && other.tag != "EnemyLaser")
         {
             Destroy(other.gameObject);
             if (_player != null)
