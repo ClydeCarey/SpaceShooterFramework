@@ -23,7 +23,7 @@ public class Powerup : MonoBehaviour
     {
         transform.Translate(Vector3.down * _speed * Time.deltaTime);
 
-        if (Input.GetKey(KeyCode.C))
+        if (Input.GetKey(KeyCode.C)) // I'd like to null check this &&  GameObject.FindGameObjectWithTag("Player") != null
         {
             _playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
             var pos = transform.position;
