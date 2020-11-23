@@ -15,14 +15,19 @@ public class SpawnManager : MonoBehaviour
     private GameObject[] powerups;
     [SerializeField]
     private GameObject[] secondaryPowerups;
+    public GameObject wave2Text;
+    public GameObject wave3Text;
+
+    int count = 0;
 
     private bool _stopSpawning = false;
 
     
     public void StartSpawning()
     {
-        StartCoroutine(SpawnEnemyRoutine());
-        StartCoroutine(SpawnCrazyAntRoutine());
+        //StartCoroutine(SpawnEnemyRoutine());
+        //StartCoroutine(SpawnCrazyAntRoutine());
+        WaveOne();
         StartCoroutine(SpawnPowerupRoutine());
         StartCoroutine(SpawnSecondaryFireRoutine());
     }
@@ -33,16 +38,98 @@ public class SpawnManager : MonoBehaviour
         
     }
 
-    IEnumerator SpawnEnemyRoutine()
+    private void WaveOne()
     {
-        yield return new WaitForSeconds(3.0f);
-        while(_stopSpawning == false)
+        
+        StartCoroutine(IncrementalSpawnEnemyRoutine());
+        
+    }
+
+    private void WaveTwo()
+    {
+        wave2Text.SetActive(false);
+        StartCoroutine(IncrementalSpawnEnemyRoutine2());
+    }
+
+    private void WaveThree()
+    {
+        wave3Text.SetActive(false);
+        StartCoroutine(IncrementalSpawnEnemyRoutine3());
+    }
+
+    IEnumerator IncrementalSpawnEnemyRoutine()
+    {
+        int count = 0;
+        while (count < 6)
         {
             Vector3 posToSpawn = new Vector3(Random.Range(-8.0f, 8.0f), 7, 0);
             GameObject newEnemy = Instantiate(_enemyPrefab, posToSpawn, Quaternion.identity);
             newEnemy.transform.parent = _enemyContainer.transform;
             yield return new WaitForSeconds(5.0f);
-                
+            count++;
+        }
+
+        yield return new WaitForSeconds(5.0f);
+
+        wave2Text.SetActive(true);
+        yield return new WaitForSeconds(5.0f);
+        WaveTwo();
+    }
+
+    IEnumerator IncrementalSpawnEnemyRoutine2()
+    {
+        int count = 0;
+        while (count < 6)
+        {
+            Vector3 posToSpawn = new Vector3(Random.Range(-8.0f, 8.0f), 7, 0);
+            GameObject newEnemy = Instantiate(_enemyPrefab, posToSpawn, Quaternion.identity);
+            newEnemy.transform.parent = _enemyContainer.transform;
+
+            Vector3 posToSpawnCA = new Vector3(Random.Range(-8.0f, 8.0f), 7, 0);
+            GameObject newEnemyCA = Instantiate(_crazyAntPrefab, posToSpawnCA, Quaternion.identity);
+            newEnemyCA.transform.parent = _enemyContainer.transform;
+
+            yield return new WaitForSeconds(5.0f);
+            count++;
+        }
+
+        yield return new WaitForSeconds(5.0f);
+
+        wave3Text.SetActive(true);
+        yield return new WaitForSeconds(5.0f);
+        WaveThree();
+    }
+
+    IEnumerator IncrementalSpawnEnemyRoutine3()
+    {
+        int count = 0;
+        while (count < 12)
+        {
+            Vector3 posToSpawn = new Vector3(Random.Range(-8.0f, 8.0f), 7, 0);
+            GameObject newEnemy = Instantiate(_enemyPrefab, posToSpawn, Quaternion.identity);
+            newEnemy.transform.parent = _enemyContainer.transform;
+
+            Vector3 posToSpawnCA = new Vector3(Random.Range(-8.0f, 8.0f), 7, 0);
+            GameObject newEnemyCA = Instantiate(_crazyAntPrefab, posToSpawnCA, Quaternion.identity);
+            newEnemyCA.transform.parent = _enemyContainer.transform;
+
+            yield return new WaitForSeconds(5.0f);
+            count++;
+        }
+
+
+    }
+
+    IEnumerator SpawnEnemyRoutine()
+    {
+        yield return new WaitForSeconds(3.0f);
+        while (_stopSpawning == false)
+        {
+            Vector3 posToSpawn = new Vector3(Random.Range(-8.0f, 8.0f), 7, 0);
+            GameObject newEnemy = Instantiate(_enemyPrefab, posToSpawn, Quaternion.identity);
+            newEnemy.transform.parent = _enemyContainer.transform;
+            yield return new WaitForSeconds(5.0f);
+
         }
     }
 
@@ -79,7 +166,7 @@ public class SpawnManager : MonoBehaviour
             Vector3 posToSpawn = new Vector3(Random.Range(-8.0f, 8.0f), 7, 0);
             int secondaryPowerupID = 0; //Random.Range(0, 6);
             Instantiate(secondaryPowerups[secondaryPowerupID], posToSpawn, Quaternion.identity);
-            yield return new WaitForSeconds(15.0f);
+            yield return new WaitForSeconds(45.0f);
         }
     }
 
