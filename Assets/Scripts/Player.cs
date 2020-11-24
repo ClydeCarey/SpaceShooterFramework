@@ -287,8 +287,11 @@ public class Player : MonoBehaviour
     {
         //Debug.Log("Ammodrop ran");
         ammoCount = 15;
-        convertAmmoToString = ammoCount.ToString();
-        textToScreen.text = convertAmmoToString;
+        //convertAmmoToString = ammoCount.ToString();
+        //textToScreen.text = convertAmmoToString;
+
+        
+        textToScreen.text = ammoCount.ToString();
     }
 
     public void HealthDrop()

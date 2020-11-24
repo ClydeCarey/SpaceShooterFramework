@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
     private Vector3 _distanceToPlayer;
     [SerializeField]
     private float _kamikazeSpeed = 0.05f;
+    private float _ramThreshold = 5.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -63,10 +64,16 @@ public class Enemy : MonoBehaviour
         _playerPositionEnemyScript = GameObject.FindGameObjectWithTag("Player").transform.position;
         //Debug.Log("playerposition " + _playerPositionEnemyScript);
         _distanceToPlayer = _playerPositionEnemyScript - transform.position;
-        //Debug.Log("distance to player is " + _distanceToPlayer);
+        //Debug.Log("vector3.distance() is " + Vector3.Distance(_playerPositionEnemyScript, transform.position));
 
         transform.Translate(Vector3.down * _speed * Time.deltaTime);
-        transform.position = Vector3.MoveTowards(transform.position, _playerPositionEnemyScript, _kamikazeSpeed);
+
+        if (Vector3.Distance(_playerPositionEnemyScript, transform.position) < _ramThreshold)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, _playerPositionEnemyScript, _kamikazeSpeed);
+        }
+        
+        
 
         if (transform.position.y < -5.0f)
         {
