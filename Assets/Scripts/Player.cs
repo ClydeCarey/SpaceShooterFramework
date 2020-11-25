@@ -8,14 +8,19 @@ public class Player : MonoBehaviour
 
     
 {
+    [SerializeField]
+    private GameObject invid;
+
     public CameraShake cameraShake;
 
     public GameObject bgMusic1;
     public GameObject bgMusic2;
     public GameObject bgMusic3;
+    public GameObject bgMusic4;
 
     private bool _secondaryFireIsActive = false;
     public bool isSecondaryFireActive = false;
+    public bool invidActive = false;
 
 
     [SerializeField]
@@ -113,11 +118,12 @@ public class Player : MonoBehaviour
         {
             FireMissile();            
         }
-    
-        //if (Input.GetKeyDown(KeyCode.C))
-        //{
-        //    PullPowerups();
-        //}
+
+        if (invidActive == true)
+        {
+            InvidBoss();
+        }
+        
     }
     
     //void PullPowerups()
@@ -356,17 +362,31 @@ public class Player : MonoBehaviour
 
     }
 
+    public void InvidBoss()
+    {
+        bgMusic1.SetActive(false);
+        bgMusic2.SetActive(false);
+        bgMusic3.SetActive(false);
+        bgMusic4.SetActive(true);
+
+        invid.SetActive(true);
+        
+    }
+       
+
     IEnumerator SecondaryTimer()
     {
         bgMusic1.SetActive(false);
         bgMusic2.SetActive(true);
-        bgMusic3.SetActive(false);        
+        bgMusic3.SetActive(false);
+        bgMusic4.SetActive(false);
 
         yield return new WaitForSeconds(7.01f);
 
         bgMusic1.SetActive(true);
         bgMusic2.SetActive(false);
         bgMusic3.SetActive(false);
+        bgMusic4.SetActive(false);
         _secondaryFireIsActive = false;
 
     }
@@ -375,13 +395,15 @@ public class Player : MonoBehaviour
     {
         bgMusic1.SetActive(false);
         bgMusic2.SetActive(false);
-        bgMusic3.SetActive(true);        
+        bgMusic3.SetActive(true);
+        bgMusic4.SetActive(false);
 
         yield return new WaitForSeconds(9.91f);
 
         bgMusic1.SetActive(true);
         bgMusic2.SetActive(false);
         bgMusic3.SetActive(false);
+        bgMusic4.SetActive(false);
         _speed = 3.5f;
 
     }

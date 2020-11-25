@@ -80,11 +80,7 @@ public class Enemy : MonoBehaviour
             float randomX = Random.Range(-8.0f, 8.0f);
             transform.position = new Vector3(randomX, 7, 0);
         }
-
-        //if (true)
-        //{
-
-        //}
+                
     }
 
     private void OnTriggerEnter2D(Collider2D other)   
