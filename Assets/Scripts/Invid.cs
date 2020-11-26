@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class Invid : MonoBehaviour
 {
-    [SerializeField]
-    [Range(0, 10)]
+    [SerializeField]    
     private float _speed = 2.0f;
 
     private Player _player;
     private Animator _anim;
     private AudioSource _audioSource;
+
+    private float _fireRate = 3.0f;
+    private float _canFire = -1;
+    [SerializeField]
+    private GameObject _bossMissilePrefab;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -29,6 +33,18 @@ public class Invid : MonoBehaviour
 
             transform.position = Vector3.Lerp(farLeft, farRight, (Mathf.Sin(_speed * Time.time) + 1.0f) / 2.0f);
 
+        }
+
+        if (Time.time > _canFire)
+        {
+            _fireRate = Random.Range(3.0f, 7.0f);
+            _canFire = Time.time + _fireRate;
+            GameObject enemyLaser = Instantiate(_bossMissilePrefab, transform.position, Quaternion.identity);
+            Laser[] lasers = enemyLaser.GetComponentsInChildren<Laser>();
+            for (int i = 0; i < lasers.Length; i++)
+            {
+                lasers[i].AssignEnemyLaser();
+            }
         }
     }
 
