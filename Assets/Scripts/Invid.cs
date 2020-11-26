@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class Invid : MonoBehaviour
 {
-    private float _speed = 1.0f;
+    [SerializeField]
+    [Range(0, 10)]
+    private float _speed = 2.0f;
 
     private Player _player;
     private Animator _anim;
     private AudioSource _audioSource;
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         transform.position = new Vector3(0, 8, 0);
         StartCoroutine(InvidMoveDown());
@@ -34,12 +36,15 @@ public class Invid : MonoBehaviour
 
     IEnumerator InvidMoveDown()
     {
+        _speed = 0.5f;
         while (transform.position.y > 3)
         {
+            Debug.Log("boss coroutine");
             transform.Translate(Vector3.down * _speed * Time.deltaTime);
-            yield return new WaitForSeconds(0.04f);
+            yield return null; // new WaitForSeconds(0.04f);
+            
         }
-
+       
         yield return new WaitForSeconds(0.75f);       
     }
 

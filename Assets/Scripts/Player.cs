@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField]
     private GameObject invid;
+    private bool _bossAlreadySpawned = false;
 
     public CameraShake cameraShake;
 
@@ -119,11 +120,13 @@ public class Player : MonoBehaviour
             FireMissile();            
         }
 
-        if (invidActive == true)
+        if (invidActive == true && _bossAlreadySpawned == false)
         {
             InvidBoss();
+            _bossAlreadySpawned = true;
+            Debug.Log("boss spawned");
         }
-        
+
     }
     
     //void PullPowerups()
