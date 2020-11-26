@@ -54,7 +54,6 @@ public class bossMissile : MonoBehaviour
 
         if (other.tag == "Laser")
         {
-            Debug.Log("Hit By Laser");
             Destroy(this.gameObject);
         }
 

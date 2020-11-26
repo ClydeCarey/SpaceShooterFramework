@@ -59,7 +59,6 @@ public class Invid : MonoBehaviour
         _speed = 0.5f;
         while (transform.position.y > 3)
         {
-            Debug.Log("boss coroutine");
             transform.Translate(Vector3.down * _speed * Time.deltaTime);
             yield return null; // new WaitForSeconds(0.04f);
             
@@ -87,13 +86,13 @@ public class Invid : MonoBehaviour
             Destroy(other.gameObject);
             _bossLives --;
 
-            _anim.SetTrigger("OnEnemyDeath");
+            //_anim.SetTrigger("OnEnemyDeath");
 
             if (_bossLives < 1)
             {
                 Destroy(this.gameObject, 2.0f);
             }
-           
+
         }
     }
 
