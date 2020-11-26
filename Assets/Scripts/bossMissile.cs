@@ -13,6 +13,8 @@ public class bossMissile : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    
+
 
     // Start is called before the first frame update
     void Start()
@@ -35,5 +37,30 @@ public class bossMissile : MonoBehaviour
 
 
         rb.velocity = transform.up * speed;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+            Player player = other.transform.GetComponent<Player>();
+
+            if (player != null)
+            {
+                player.Damage();
+                Destroy(this.gameObject);
+            }
+        }
+
+        if (other.tag == "Laser")
+        {
+            Debug.Log("Hit By Laser");
+            Destroy(this.gameObject);
+        }
+
+        if (other.tag == "Missile")
+        {
+            Destroy(other.gameObject);
+        }
     }
 }

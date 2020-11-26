@@ -11,16 +11,20 @@ public class Invid : MonoBehaviour
     private Animator _anim;
     private AudioSource _audioSource;
 
+    private bool _inFiringPosition = false;
     private float _fireRate = 3.0f;
     private float _canFire = -1;
     [SerializeField]
     private GameObject _bossMissilePrefab;
+
+    private int _bossLives = 3;
 
     // Start is called before the first frame update
     void OnEnable()
     {
         transform.position = new Vector3(0, 8, 0);
         StartCoroutine(InvidMoveDown());
+        _anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -35,7 +39,7 @@ public class Invid : MonoBehaviour
 
         }
 
-        if (Time.time > _canFire)
+        if (_inFiringPosition == true && Time.time > _canFire)
         {
             _fireRate = Random.Range(3.0f, 7.0f);
             _canFire = Time.time + _fireRate;
@@ -61,7 +65,8 @@ public class Invid : MonoBehaviour
             
         }
        
-        yield return new WaitForSeconds(0.75f);       
+        yield return new WaitForSeconds(0.75f);
+        _inFiringPosition = true;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -74,46 +79,22 @@ public class Invid : MonoBehaviour
             {
                 player.Damage();
             }
-
-            //_anim.SetTrigger("OnEnemyDeath");
-            ////_speed = 0;
-            //transform.GetComponent<BoxCollider2D>().enabled = false;
-            //_audioSource.Play();
-            //Destroy(this.gameObject, 2.0f);
+                        
         }
 
-        //if (other.tag == "Laser" && other.tag != "EnemyLaser")
-        //{
-        //    Destroy(other.gameObject);
-        //    if (_player != null)
-        //    {
-        //        _player.AddScore(10);
-        //    }
+        if (other.tag == "Laser" || other.tag == "Missile")
+        {
+            Destroy(other.gameObject);
+            _bossLives --;
 
+            _anim.SetTrigger("OnEnemyDeath");
 
-
-        //    _anim.SetTrigger("OnEnemyDeath");
-        //    //_speed = 0;
-        //    transform.GetComponent<BoxCollider2D>().enabled = false;
-        //    _audioSource.Play();
-        //    Destroy(this.gameObject, 2.0f);
-        //}
-
-        //if (other.tag == "Missile")
-        //{
-        //    Destroy(other.gameObject);
-        //    if (_player != null)
-        //    {
-        //        _player.AddScore(10);
-        //    }
-
-
-
-        //    _anim.SetTrigger("OnEnemyDeath");
+            if (_bossLives < 1)
+            {
+                Destroy(this.gameObject, 2.0f);
+            }
            
-        //    _audioSource.Play();
-        //    Destroy(this.gameObject, 2.0f);
-        //}
+        }
     }
 
 }
