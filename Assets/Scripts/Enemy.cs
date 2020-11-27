@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private GameObject _laserPrefab;
 
+    private bool moveDownNow = false;
+
     private Player _player;
     private Animator _anim;
     private AudioSource _audioSource;
@@ -38,12 +40,18 @@ public class Enemy : MonoBehaviour
             Debug.LogError("The animator is NULL");
         }
 
+        StartCoroutine(EnemyMoveDown());
     }
 
     // Update is called once per frame
     void Update()
     {
-        CalculateMovement();
+        
+
+        if (moveDownNow == true)
+        {
+            CalculateMovement();
+        }
 
         if (Time.time > _canFire)
         {
@@ -62,11 +70,12 @@ public class Enemy : MonoBehaviour
     void CalculateMovement()
     {
         _playerPositionEnemyScript = GameObject.FindGameObjectWithTag("Player").transform.position;
-        //Debug.Log("playerposition " + _playerPositionEnemyScript);
+        
         _distanceToPlayer = _playerPositionEnemyScript - transform.position;
-        //Debug.Log("vector3.distance() is " + Vector3.Distance(_playerPositionEnemyScript, transform.position));
+        
 
         transform.Translate(Vector3.down * _speed * Time.deltaTime);
+        
 
         if (Vector3.Distance(_playerPositionEnemyScript, transform.position) < _ramThreshold)
         {
@@ -135,6 +144,24 @@ public class Enemy : MonoBehaviour
             Destroy(this.gameObject, 2.0f);
         }
     }
-    
-    
+    IEnumerator EnemyMoveDown()
+    {
+        _speed = 4.0f;
+        while (transform.position.y > 3)
+        {
+            transform.Translate(Vector3.down * _speed * Time.deltaTime); 
+            transform.Translate(Vector3.right * _speed * Time.deltaTime);
+            if (transform.position.x > 11.0f)
+            {                
+                transform.position = new Vector3(-11.0f, 7, 0);
+            }
+            yield return null;
+
+        }
+
+        yield return new WaitForSeconds(0.75f);
+        moveDownNow = true;
+    }
+
+
 }
