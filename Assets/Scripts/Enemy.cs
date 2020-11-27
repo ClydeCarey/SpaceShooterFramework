@@ -17,10 +17,12 @@ public class Enemy : MonoBehaviour
     private float _canFire = -1;
 
     private Vector3 _playerPositionEnemyScript;
+    private Vector3 _playerLaserPosition;
     private Vector3 _distanceToPlayer;
     [SerializeField]
     private float _kamikazeSpeed = 0.05f;
     private float _ramThreshold = 5.0f;
+    private float _laserDistanceThreshold = 4.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -69,6 +71,7 @@ public class Enemy : MonoBehaviour
 
     void CalculateMovement()
     {
+        _playerLaserPosition = GameObject.FindGameObjectWithTag("Laser").transform.position;
         _playerPositionEnemyScript = GameObject.FindGameObjectWithTag("Player").transform.position;
         
         _distanceToPlayer = _playerPositionEnemyScript - transform.position;
@@ -81,8 +84,11 @@ public class Enemy : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, _playerPositionEnemyScript, _kamikazeSpeed);
         }
-        
-        
+
+        if (Vector3.Distance(_playerLaserPosition, transform.position) < _laserDistanceThreshold)
+        {
+            transform.Translate(Vector3.right * _speed * Time.deltaTime);
+        }
 
         if (transform.position.y < -5.0f)
         {
