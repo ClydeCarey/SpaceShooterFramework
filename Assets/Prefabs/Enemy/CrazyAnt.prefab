@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db12721664152e344961bc37d777b683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _laserPrefab: {fileID: 2798961572320112798, guid: de698cbb3ecb6e54d83e12ff546fd048,
+  _crazyAntMissilePrefab: {fileID: 8616326574643643617, guid: 8975f5ccd5dfac14ba468034540a1173,
     type: 3}
 --- !u!212 &7161435714978465160
 SpriteRenderer:

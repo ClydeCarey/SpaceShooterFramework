@@ -10,6 +10,7 @@ TagManager:
   - EnemyLaser
   - PowerupIcon
   - BossMissile
+  - CrazyAntMissile
   layers:
   - Default
   - TransparentFX

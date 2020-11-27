@@ -148,7 +148,7 @@ public class SpawnManager : MonoBehaviour
             count++;
         }
 
-        player.invidActive = true;
+        player.invidActive = true;        
     }
 
     IEnumerator SpawnEnemyRoutine()

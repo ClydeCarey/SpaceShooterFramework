@@ -6,7 +6,7 @@ public class CrazyAnt : MonoBehaviour
 {
     private float _speed = 4.0f;
     [SerializeField]
-    private GameObject _laserPrefab;
+    private GameObject _crazyAntMissilePrefab;
 
     private Player _player;
     private Animator _anim;
@@ -49,12 +49,12 @@ public class CrazyAnt : MonoBehaviour
         {
             _fireRate = Random.Range(3.0f, 7.0f);
             _canFire = Time.time + _fireRate;
-            GameObject enemyLaser = Instantiate(_laserPrefab, transform.position, Quaternion.identity);
-            Laser[] lasers = enemyLaser.GetComponentsInChildren<Laser>();
-            for (int i = 0; i < lasers.Length; i++)
-            {
-                lasers[i].AssignEnemyLaser();
-            }
+            GameObject enemyLaser = Instantiate(_crazyAntMissilePrefab, transform.position, Quaternion.identity);
+            //Laser[] lasers = enemyLaser.GetComponentsInChildren<Laser>();
+            //for (int i = 0; i < lasers.Length; i++)
+            //{
+            //    lasers[i].AssignEnemyLaser();
+            //}
         }
     }
     IEnumerator RandomValues()
@@ -97,7 +97,7 @@ public class CrazyAnt : MonoBehaviour
             Destroy(this.gameObject, 2.0f);
         }
 
-        if (other.tag == "Laser")
+        if (other.tag == "Laser" && other.tag != "EnemyLaser")
         {
             Destroy(other.gameObject);
             if (_player != null)
