@@ -17,6 +17,9 @@ public class SpawnManager : MonoBehaviour
     private GameObject[] secondaryPowerups;
     public GameObject wave2Text;
     public GameObject wave3Text;
+    public GameObject bossWaveText;
+
+    Player player;
 
     int count = 0;
 
@@ -55,6 +58,12 @@ public class SpawnManager : MonoBehaviour
     {
         wave3Text.SetActive(false);
         StartCoroutine(IncrementalSpawnEnemyRoutine3());
+    }
+
+    private void BossWave()
+    {
+        wave3Text.SetActive(false);
+        StartCoroutine(BossWaveRoutine());
     }
 
     IEnumerator IncrementalSpawnEnemyRoutine()
@@ -117,7 +126,29 @@ public class SpawnManager : MonoBehaviour
             count++;
         }
 
+        bossWaveText.SetActive(true);
+        yield return new WaitForSeconds(5.0f);
+        BossWave();
+    }
 
+    IEnumerator BossWaveRoutine()
+    {
+        int count = 0;
+        while (count < 20)
+        {
+            Vector3 posToSpawn = new Vector3(Random.Range(-8.0f, 8.0f), 7, 0);
+            GameObject newEnemy = Instantiate(_enemyPrefab, posToSpawn, Quaternion.identity);
+            newEnemy.transform.parent = _enemyContainer.transform;
+
+            Vector3 posToSpawnCA = new Vector3(Random.Range(-8.0f, 8.0f), 7, 0);
+            GameObject newEnemyCA = Instantiate(_crazyAntPrefab, posToSpawnCA, Quaternion.identity);
+            newEnemyCA.transform.parent = _enemyContainer.transform;
+
+            yield return new WaitForSeconds(3.0f);
+            count++;
+        }
+
+        player.invidActive = true;
     }
 
     IEnumerator SpawnEnemyRoutine()
