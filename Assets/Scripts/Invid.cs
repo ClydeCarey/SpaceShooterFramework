@@ -35,8 +35,8 @@ public class Invid : MonoBehaviour
             Vector3 farLeft = new Vector3(-7.7f, 3, 0);
             Vector3 farRight = new Vector3(7.7f, 3, 0);
 
-            transform.position = Vector3.Lerp(farLeft, farRight, (Mathf.Sin(_speed * Time.time) + 1.0f) / 2.0f);
-
+            //transform.position = Vector3.Lerp(farLeft, farRight, (Mathf.Sin(_speed * Time.time) + 1.0f) / 2.0f);
+            transform.position = new Vector3((Mathf.Sin(_speed * Time.time) * 5.0f), transform.position.y, transform.position.z );
         }
 
         if (_inFiringPosition == true && Time.time > _canFire)

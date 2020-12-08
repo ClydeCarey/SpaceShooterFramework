@@ -2311,7 +2311,7 @@ MonoBehaviour:
   bgMusic3: {fileID: 627845975}
   bgMusic4: {fileID: 750368666}
   isSecondaryFireActive: 0
-  invidActive: 0
+  invidActive: 1
   _speed: 5
   _thrustersMultiplier: 1
   _laserPrefab: {fileID: 4981891334259518781, guid: 620b0b1a02aa35f468f9b877d0010d70,
